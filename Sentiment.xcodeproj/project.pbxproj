@@ -10,9 +10,9 @@
 		237FFF672937E45B002BCD80 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237FFF662937E45B002BCD80 /* AppDelegate.swift */; };
 		237FFF692937E45B002BCD80 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237FFF682937E45B002BCD80 /* SceneDelegate.swift */; };
 		237FFF6B2937E45B002BCD80 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237FFF6A2937E45B002BCD80 /* ViewController.swift */; };
-		237FFF6E2937E45B002BCD80 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 237FFF6C2937E45B002BCD80 /* Main.storyboard */; };
 		237FFF702937E45C002BCD80 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 237FFF6F2937E45C002BCD80 /* Assets.xcassets */; };
 		237FFF732937E45C002BCD80 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 237FFF712937E45C002BCD80 /* LaunchScreen.storyboard */; };
+		4E245D62FECF77500F768486 /* Pods_Sentiment.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE924942F87BE42AFA144E0B /* Pods_Sentiment.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,10 +20,12 @@
 		237FFF662937E45B002BCD80 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		237FFF682937E45B002BCD80 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		237FFF6A2937E45B002BCD80 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		237FFF6D2937E45B002BCD80 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		237FFF6F2937E45C002BCD80 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		237FFF722937E45C002BCD80 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		237FFF742937E45C002BCD80 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2C56B8CCBB9E37D750D82E30 /* Pods-Sentiment.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sentiment.debug.xcconfig"; path = "Target Support Files/Pods-Sentiment/Pods-Sentiment.debug.xcconfig"; sourceTree = "<group>"; };
+		DE924942F87BE42AFA144E0B /* Pods_Sentiment.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Sentiment.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EABA7DD759634F00B9C75855 /* Pods-Sentiment.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sentiment.release.xcconfig"; path = "Target Support Files/Pods-Sentiment/Pods-Sentiment.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +33,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4E245D62FECF77500F768486 /* Pods_Sentiment.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,6 +45,8 @@
 			children = (
 				237FFF652937E45B002BCD80 /* Sentiment */,
 				237FFF642937E45B002BCD80 /* Products */,
+				A98A916A83B7C75D50C00292 /* Pods */,
+				DA0E0F7219A2136BFB0F3850 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -59,12 +64,29 @@
 				237FFF662937E45B002BCD80 /* AppDelegate.swift */,
 				237FFF682937E45B002BCD80 /* SceneDelegate.swift */,
 				237FFF6A2937E45B002BCD80 /* ViewController.swift */,
-				237FFF6C2937E45B002BCD80 /* Main.storyboard */,
 				237FFF6F2937E45C002BCD80 /* Assets.xcassets */,
 				237FFF712937E45C002BCD80 /* LaunchScreen.storyboard */,
 				237FFF742937E45C002BCD80 /* Info.plist */,
 			);
 			path = Sentiment;
+			sourceTree = "<group>";
+		};
+		A98A916A83B7C75D50C00292 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				2C56B8CCBB9E37D750D82E30 /* Pods-Sentiment.debug.xcconfig */,
+				EABA7DD759634F00B9C75855 /* Pods-Sentiment.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		DA0E0F7219A2136BFB0F3850 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DE924942F87BE42AFA144E0B /* Pods_Sentiment.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,9 +96,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 237FFF772937E45C002BCD80 /* Build configuration list for PBXNativeTarget "Sentiment" */;
 			buildPhases = (
+				52339F2426AB119710A0D59C /* [CP] Check Pods Manifest.lock */,
 				237FFF5F2937E45B002BCD80 /* Sources */,
 				237FFF602937E45B002BCD80 /* Frameworks */,
 				237FFF612937E45B002BCD80 /* Resources */,
+				C5D52A81570673F96B2614EC /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -127,11 +151,52 @@
 			files = (
 				237FFF732937E45C002BCD80 /* LaunchScreen.storyboard in Resources */,
 				237FFF702937E45C002BCD80 /* Assets.xcassets in Resources */,
-				237FFF6E2937E45B002BCD80 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		52339F2426AB119710A0D59C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Sentiment-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C5D52A81570673F96B2614EC /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Sentiment/Pods-Sentiment-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Sentiment/Pods-Sentiment-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Sentiment/Pods-Sentiment-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		237FFF5F2937E45B002BCD80 /* Sources */ = {
@@ -147,14 +212,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		237FFF6C2937E45B002BCD80 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				237FFF6D2937E45B002BCD80 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		237FFF712937E45C002BCD80 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -282,6 +339,7 @@
 		};
 		237FFF782937E45C002BCD80 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2C56B8CCBB9E37D750D82E30 /* Pods-Sentiment.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -291,7 +349,6 @@
 				INFOPLIST_FILE = Sentiment/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -309,6 +366,7 @@
 		};
 		237FFF792937E45C002BCD80 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EABA7DD759634F00B9C75855 /* Pods-Sentiment.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -318,7 +376,6 @@
 				INFOPLIST_FILE = Sentiment/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
