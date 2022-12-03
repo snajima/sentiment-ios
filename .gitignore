@@ -1,2 +1,4 @@
 .DS_Store
 Pods
+GoogleService-Info.plist
+Keys.plist

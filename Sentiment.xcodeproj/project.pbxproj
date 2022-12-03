@@ -7,15 +7,50 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		232A981C2937F27200F3129F /* GoogleAuthLoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232A981B2937F27200F3129F /* GoogleAuthLoginVC.swift */; };
+		232A981E2937F29700F3129F /* TabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232A981D2937F29700F3129F /* TabViewController.swift */; };
+		232A98212937F2DF00F3129F /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232A98202937F2DF00F3129F /* CalendarViewController.swift */; };
+		232A98232937F2FD00F3129F /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232A98222937F2FD00F3129F /* Models.swift */; };
+		232A98282937F35A00F3129F /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232A98272937F35A00F3129F /* NetworkManager.swift */; };
+		232A982A2937F3F900F3129F /* FavoritedEventsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232A98292937F3F900F3129F /* FavoritedEventsTableViewCell.swift */; };
+		232A982C2937F40F00F3129F /* BookmarkedBucketListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232A982B2937F40F00F3129F /* BookmarkedBucketListViewController.swift */; };
+		232A982E2937F41E00F3129F /* BookmarkFilterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232A982D2937F41E00F3129F /* BookmarkFilterCollectionViewCell.swift */; };
+		232A98312937F48E00F3129F /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232A98302937F48E00F3129F /* Theme.swift */; };
+		232A98332937F49B00F3129F /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232A98322937F49B00F3129F /* PaddingLabel.swift */; };
+		232A98362937F72000F3129F /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232A98352937F72000F3129F /* ProfileViewController.swift */; };
+		232A98382937F72E00F3129F /* BucketTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232A98372937F72E00F3129F /* BucketTableViewCell.swift */; };
+		232A983A2937F74200F3129F /* DOFavoriteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232A98392937F74200F3129F /* DOFavoriteButton.swift */; };
+		232A9841293801E600F3129F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 232A9840293801E600F3129F /* GoogleService-Info.plist */; };
 		237FFF672937E45B002BCD80 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237FFF662937E45B002BCD80 /* AppDelegate.swift */; };
 		237FFF692937E45B002BCD80 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237FFF682937E45B002BCD80 /* SceneDelegate.swift */; };
 		237FFF6B2937E45B002BCD80 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237FFF6A2937E45B002BCD80 /* ViewController.swift */; };
 		237FFF702937E45C002BCD80 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 237FFF6F2937E45C002BCD80 /* Assets.xcassets */; };
 		237FFF732937E45C002BCD80 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 237FFF712937E45C002BCD80 /* LaunchScreen.storyboard */; };
+		23BAE00A293903F200C01DBA /* Quicksand-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 23BAE004293903F200C01DBA /* Quicksand-VariableFont_wght.ttf */; };
+		23BAE00B293903F300C01DBA /* Quicksand-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 23BAE005293903F200C01DBA /* Quicksand-Light.ttf */; };
+		23BAE00C293903F300C01DBA /* Quicksand-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 23BAE006293903F200C01DBA /* Quicksand-Regular.ttf */; };
+		23BAE00D293903F300C01DBA /* Quicksand-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 23BAE007293903F200C01DBA /* Quicksand-Medium.ttf */; };
+		23BAE00E293903F300C01DBA /* Quicksand-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 23BAE008293903F200C01DBA /* Quicksand-SemiBold.ttf */; };
+		23BAE00F293903F300C01DBA /* Quicksand-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 23BAE009293903F200C01DBA /* Quicksand-Bold.ttf */; };
+		23BAE01429392F5400C01DBA /* EntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BAE01329392F5400C01DBA /* EntryViewController.swift */; };
 		4E245D62FECF77500F768486 /* Pods_Sentiment.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE924942F87BE42AFA144E0B /* Pods_Sentiment.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		232A981B2937F27200F3129F /* GoogleAuthLoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleAuthLoginVC.swift; sourceTree = "<group>"; };
+		232A981D2937F29700F3129F /* TabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewController.swift; sourceTree = "<group>"; };
+		232A98202937F2DF00F3129F /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
+		232A98222937F2FD00F3129F /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
+		232A98272937F35A00F3129F /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		232A98292937F3F900F3129F /* FavoritedEventsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritedEventsTableViewCell.swift; sourceTree = "<group>"; };
+		232A982B2937F40F00F3129F /* BookmarkedBucketListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkedBucketListViewController.swift; sourceTree = "<group>"; };
+		232A982D2937F41E00F3129F /* BookmarkFilterCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkFilterCollectionViewCell.swift; sourceTree = "<group>"; };
+		232A98302937F48E00F3129F /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		232A98322937F49B00F3129F /* PaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
+		232A98352937F72000F3129F /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		232A98372937F72E00F3129F /* BucketTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BucketTableViewCell.swift; sourceTree = "<group>"; };
+		232A98392937F74200F3129F /* DOFavoriteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DOFavoriteButton.swift; sourceTree = "<group>"; };
+		232A9840293801E600F3129F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		237FFF632937E45B002BCD80 /* Sentiment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sentiment.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		237FFF662937E45B002BCD80 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		237FFF682937E45B002BCD80 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -23,6 +58,13 @@
 		237FFF6F2937E45C002BCD80 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		237FFF722937E45C002BCD80 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		237FFF742937E45C002BCD80 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		23BAE004293903F200C01DBA /* Quicksand-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Quicksand-VariableFont_wght.ttf"; path = "../../../../../../Downloads/Quicksand 2/Quicksand-VariableFont_wght.ttf"; sourceTree = "<group>"; };
+		23BAE005293903F200C01DBA /* Quicksand-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Quicksand-Light.ttf"; path = "../../../../../../Downloads/Quicksand 2/static/Quicksand-Light.ttf"; sourceTree = "<group>"; };
+		23BAE006293903F200C01DBA /* Quicksand-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Quicksand-Regular.ttf"; path = "../../../../../../Downloads/Quicksand 2/static/Quicksand-Regular.ttf"; sourceTree = "<group>"; };
+		23BAE007293903F200C01DBA /* Quicksand-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Quicksand-Medium.ttf"; path = "../../../../../../Downloads/Quicksand 2/static/Quicksand-Medium.ttf"; sourceTree = "<group>"; };
+		23BAE008293903F200C01DBA /* Quicksand-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Quicksand-SemiBold.ttf"; path = "../../../../../../Downloads/Quicksand 2/static/Quicksand-SemiBold.ttf"; sourceTree = "<group>"; };
+		23BAE009293903F200C01DBA /* Quicksand-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Quicksand-Bold.ttf"; path = "../../../../../../Downloads/Quicksand 2/static/Quicksand-Bold.ttf"; sourceTree = "<group>"; };
+		23BAE01329392F5400C01DBA /* EntryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryViewController.swift; sourceTree = "<group>"; };
 		2C56B8CCBB9E37D750D82E30 /* Pods-Sentiment.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sentiment.debug.xcconfig"; path = "Target Support Files/Pods-Sentiment/Pods-Sentiment.debug.xcconfig"; sourceTree = "<group>"; };
 		DE924942F87BE42AFA144E0B /* Pods_Sentiment.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Sentiment.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EABA7DD759634F00B9C75855 /* Pods-Sentiment.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sentiment.release.xcconfig"; path = "Target Support Files/Pods-Sentiment/Pods-Sentiment.release.xcconfig"; sourceTree = "<group>"; };
@@ -40,6 +82,44 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		232A981A2937F25C00F3129F /* LogInViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				232A981B2937F27200F3129F /* GoogleAuthLoginVC.swift */,
+			);
+			path = LogInViewControllers;
+			sourceTree = "<group>";
+		};
+		232A981F2937F2CB00F3129F /* CalendarTabView */ = {
+			isa = PBXGroup;
+			children = (
+				232A98202937F2DF00F3129F /* CalendarViewController.swift */,
+				232A982D2937F41E00F3129F /* BookmarkFilterCollectionViewCell.swift */,
+				232A98292937F3F900F3129F /* FavoritedEventsTableViewCell.swift */,
+				232A982B2937F40F00F3129F /* BookmarkedBucketListViewController.swift */,
+			);
+			path = CalendarTabView;
+			sourceTree = "<group>";
+		};
+		232A982F2937F46C00F3129F /* AestheticFiles */ = {
+			isa = PBXGroup;
+			children = (
+				232A98302937F48E00F3129F /* Theme.swift */,
+				232A98322937F49B00F3129F /* PaddingLabel.swift */,
+				232A98392937F74200F3129F /* DOFavoriteButton.swift */,
+			);
+			path = AestheticFiles;
+			sourceTree = "<group>";
+		};
+		232A98342937F70D00F3129F /* ProfileViews */ = {
+			isa = PBXGroup;
+			children = (
+				232A98352937F72000F3129F /* ProfileViewController.swift */,
+				232A98372937F72E00F3129F /* BucketTableViewCell.swift */,
+			);
+			path = ProfileViews;
+			sourceTree = "<group>";
+		};
 		237FFF5A2937E45B002BCD80 = {
 			isa = PBXGroup;
 			children = (
@@ -61,8 +141,18 @@
 		237FFF652937E45B002BCD80 /* Sentiment */ = {
 			isa = PBXGroup;
 			children = (
+				23BAE01229392F3E00C01DBA /* EntryViews */,
+				23BADFFD293901C500C01DBA /* Fonts */,
+				232A98342937F70D00F3129F /* ProfileViews */,
+				232A982F2937F46C00F3129F /* AestheticFiles */,
+				232A981F2937F2CB00F3129F /* CalendarTabView */,
+				232A981A2937F25C00F3129F /* LogInViewControllers */,
 				237FFF662937E45B002BCD80 /* AppDelegate.swift */,
+				232A981D2937F29700F3129F /* TabViewController.swift */,
+				232A98272937F35A00F3129F /* NetworkManager.swift */,
+				232A98222937F2FD00F3129F /* Models.swift */,
 				237FFF682937E45B002BCD80 /* SceneDelegate.swift */,
+				232A9840293801E600F3129F /* GoogleService-Info.plist */,
 				237FFF6A2937E45B002BCD80 /* ViewController.swift */,
 				237FFF6F2937E45C002BCD80 /* Assets.xcassets */,
 				237FFF712937E45C002BCD80 /* LaunchScreen.storyboard */,
@@ -71,13 +161,33 @@
 			path = Sentiment;
 			sourceTree = "<group>";
 		};
+		23BADFFD293901C500C01DBA /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				23BAE009293903F200C01DBA /* Quicksand-Bold.ttf */,
+				23BAE005293903F200C01DBA /* Quicksand-Light.ttf */,
+				23BAE007293903F200C01DBA /* Quicksand-Medium.ttf */,
+				23BAE006293903F200C01DBA /* Quicksand-Regular.ttf */,
+				23BAE008293903F200C01DBA /* Quicksand-SemiBold.ttf */,
+				23BAE004293903F200C01DBA /* Quicksand-VariableFont_wght.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		23BAE01229392F3E00C01DBA /* EntryViews */ = {
+			isa = PBXGroup;
+			children = (
+				23BAE01329392F5400C01DBA /* EntryViewController.swift */,
+			);
+			path = EntryViews;
+			sourceTree = "<group>";
+		};
 		A98A916A83B7C75D50C00292 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
 				2C56B8CCBB9E37D750D82E30 /* Pods-Sentiment.debug.xcconfig */,
 				EABA7DD759634F00B9C75855 /* Pods-Sentiment.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -150,7 +260,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				237FFF732937E45C002BCD80 /* LaunchScreen.storyboard in Resources */,
+				23BAE00E293903F300C01DBA /* Quicksand-SemiBold.ttf in Resources */,
+				23BAE00C293903F300C01DBA /* Quicksand-Regular.ttf in Resources */,
+				23BAE00D293903F300C01DBA /* Quicksand-Medium.ttf in Resources */,
+				23BAE00F293903F300C01DBA /* Quicksand-Bold.ttf in Resources */,
+				23BAE00A293903F200C01DBA /* Quicksand-VariableFont_wght.ttf in Resources */,
 				237FFF702937E45C002BCD80 /* Assets.xcassets in Resources */,
+				232A9841293801E600F3129F /* GoogleService-Info.plist in Resources */,
+				23BAE00B293903F300C01DBA /* Quicksand-Light.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -203,9 +320,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				232A983A2937F74200F3129F /* DOFavoriteButton.swift in Sources */,
+				232A98282937F35A00F3129F /* NetworkManager.swift in Sources */,
+				232A982A2937F3F900F3129F /* FavoritedEventsTableViewCell.swift in Sources */,
+				232A98212937F2DF00F3129F /* CalendarViewController.swift in Sources */,
+				23BAE01429392F5400C01DBA /* EntryViewController.swift in Sources */,
+				232A98382937F72E00F3129F /* BucketTableViewCell.swift in Sources */,
+				232A982E2937F41E00F3129F /* BookmarkFilterCollectionViewCell.swift in Sources */,
 				237FFF6B2937E45B002BCD80 /* ViewController.swift in Sources */,
 				237FFF672937E45B002BCD80 /* AppDelegate.swift in Sources */,
 				237FFF692937E45B002BCD80 /* SceneDelegate.swift in Sources */,
+				232A982C2937F40F00F3129F /* BookmarkedBucketListViewController.swift in Sources */,
+				232A981E2937F29700F3129F /* TabViewController.swift in Sources */,
+				232A98312937F48E00F3129F /* Theme.swift in Sources */,
+				232A98362937F72000F3129F /* ProfileViewController.swift in Sources */,
+				232A98332937F49B00F3129F /* PaddingLabel.swift in Sources */,
+				232A981C2937F27200F3129F /* GoogleAuthLoginVC.swift in Sources */,
+				232A98232937F2FD00F3129F /* Models.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -345,12 +476,15 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = V96W73VB62;
+				ENABLE_BITCODE = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Sentiment/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -372,12 +506,15 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = V96W73VB62;
+				ENABLE_BITCODE = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Sentiment/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
