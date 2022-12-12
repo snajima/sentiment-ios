@@ -9,7 +9,7 @@ import Foundation
 import Alamofire
 
 class NetworkManager {
-    static let host: String = "localhost"
+    static let host: String = "http://localhost:8000"
     
     
     static func sendToken(token: String, completion: @escaping (User) -> Void) {
@@ -19,56 +19,13 @@ class NetworkManager {
         ]
         
         AF.request(endpoint, method: .post,parameters: params,encoding: JSONEncoding.default).validate().responseData { response in
-                switch (response.result) {
-                case .success(let data):
-                    let jsonDecoder = JSONDecoder()
-                    jsonDecoder.dateDecodingStrategy = .iso8601
-                    jsonDecoder.keyDecodingStrategy = .convertFromSnakeCase
-                    if let eventResponse = try? jsonDecoder.decode(User.self, from: data) {
-                        completion(eventResponse)
-                    } else {
-                        print("Failed to decode sendToken")
-                    }
-                case .failure(let error):
-                    print(error.localizedDescription)
-                }
-
-            }
-    }
-
-    
-    static func getAllEvents(completion: @escaping (EventsResponse) -> Void) {
-        let endpoint = "\(host)/events/"
-        AF.request(endpoint, method: .get).validate().responseData { response in
             switch (response.result) {
             case .success(let data):
                 let jsonDecoder = JSONDecoder()
-                jsonDecoder.dateDecodingStrategy = .iso8601
-                jsonDecoder.keyDecodingStrategy = .convertFromSnakeCase
-                if let eventsResponse = try? jsonDecoder.decode(EventsResponse.self, from: data) {
-                    completion(eventsResponse)
-                } else {
-                    print("Failed to decode getAllEvents")
-                }
-            case .failure(let error):
-                print(error.localizedDescription)
-            }
-        }
-    }
-    
-    static func getRandomEvent(completion: @escaping (Event) -> Void) {
-        let endpoint = "\(host)/events/random/"
-        AF.request(endpoint, method: .get).validate().responseData { response in
-            debugPrint(response)
-            switch (response.result) {
-            case .success(let data):
-                let jsonDecoder = JSONDecoder()
-                jsonDecoder.dateDecodingStrategy = .iso8601
-                jsonDecoder.keyDecodingStrategy = .convertFromSnakeCase
-                if let eventResponse = try? jsonDecoder.decode(Event.self, from: data) {
+                if let eventResponse = try? jsonDecoder.decode(User.self, from: data) {
                     completion(eventResponse)
                 } else {
-                    print("Failed to decode getRandomEvent")
+                    print("Failed to decode sendToken")
                 }
             case .failure(let error):
                 print(error.localizedDescription)
@@ -76,19 +33,20 @@ class NetworkManager {
         }
     }
     
-    static func searchEvents(eventName: String, completion: @escaping (EventsResponse) -> Void) {
-        let endpoint = "\(host)/event/\(eventName)/"
+    
+    static func getAllEntries(completion: @escaping (Entries) -> Void) {
+        let endpoint = "\(host)/entries/"
         AF.request(endpoint, method: .get).validate().responseData { response in
             debugPrint(response)
             switch (response.result) {
             case .success(let data):
                 let jsonDecoder = JSONDecoder()
-                jsonDecoder.dateDecodingStrategy = .iso8601
-                jsonDecoder.keyDecodingStrategy = .convertFromSnakeCase
-                if let eventsResponse = try? jsonDecoder.decode(EventsResponse.self, from: data) {
-                    completion(eventsResponse)
+                if let entriesResponse = try? jsonDecoder.decode(Entries.self, from: data) {
+                    completion(entriesResponse)
                 } else {
-                    print("Failed to decode getAllBucketlistItems")
+                    // print the error
+                    print("Failed to decode getAllEntries")
+                    print(String(data: data, encoding: .utf8)!)
                 }
             case .failure(let error):
                 print(error.localizedDescription)
@@ -96,101 +54,25 @@ class NetworkManager {
         }
     }
     
-    static func getBookmarkedEvents(completion: @escaping (savedEventsResponse) -> Void) {
-        let endpoint = "http://34.124.124.62/users/1/events/bookmark/"
-        AF.request(endpoint, method: .get).validate().responseData { response in
-            switch (response.result) {
-            case .success(let data):
-                let jsonDecoder = JSONDecoder()
-                jsonDecoder.dateDecodingStrategy = .iso8601
-                jsonDecoder.keyDecodingStrategy = .convertFromSnakeCase
-                if let eventsResponse = try? jsonDecoder.decode(savedEventsResponse.self, from: data) {
-                    completion(eventsResponse)
-                } else {
-                    print("Failed to decode getBookmarkedEvents")
-                }
-            case .failure(let error):
-                print(error.localizedDescription)
-            }
-        }
-    }
-
-    
-    static func postEvent(title: String, hostName: String, date: Int, location: String, description: String, categories: String, image: String, completion: @escaping (Event) -> Void) {
-        let endpoint = "\(host)/users/1/events/"
+    static func postEntry(entry_description: String, poster_id: Int, date: Date, emotion: String?, completion: @escaping (Entry) -> Void) {
+        let endpoint = "\(host)/entries/"
         
-        let params: [String:Any] = [
-            "title": title,
-            "host_name": hostName,
-            "date": date,
-            "location": location,
-            "description": description,
-            "categories": categories,
-            "image_data": image
+        let params: [String: Any] = [
+            "entry_description": entry_description,
+            "poster_id": poster_id,
+            "date": convertDateToString(date: date),
+            "emotion": emotion as Any,
         ]
         
         AF.request(endpoint, method: .post, parameters: params, encoding: JSONEncoding.default).validate().responseData { response in
-                debugPrint(response)
-                switch (response.result) {
-                case .success(let data):
-                    let jsonDecoder = JSONDecoder()
-                    jsonDecoder.dateDecodingStrategy = .iso8601
-                    jsonDecoder.keyDecodingStrategy = .convertFromSnakeCase
-                    if let eventResponse = try? jsonDecoder.decode(Event.self, from: data) {
-                        completion(eventResponse)
-                    } else {
-                        print("Failed to decode postEvent")
-                    }
-                case .failure(let error):
-                    print(error.localizedDescription)
-                }
-
-            }
-        
-    }
-    
-    static func bookmarkEvent(id: Int, completion: @escaping (savedEventsResponse) -> Void) {
-        let endpoint = "\(host)/users/1/events/\(id)/bookmark/"
-        let params = [
-            "id": id
-        ]
-        
-        AF.request(endpoint, method: .post, parameters: params, encoding: JSONEncoding.default)
-            .validate().responseData { response in
-                debugPrint(response)
-                switch (response.result) {
-                case .success(let data):
-                    let jsonDecoder = JSONDecoder()
-                    jsonDecoder.dateDecodingStrategy = .iso8601
-                    jsonDecoder.keyDecodingStrategy = .convertFromSnakeCase
-                    if let eventResponse = try? jsonDecoder.decode(savedEventsResponse.self, from: data) {
-                        completion(eventResponse)
-                    } else {
-                        print("Failed to decode bookmarkEvent")
-                    }
-                case .failure(let error):
-                    print(error.localizedDescription)
-                    }
-
-            }
-        
-    }
-    
-    
-
-        
-    static func getAllBucketlistItemsByUser(completion: @escaping (BucketsResponse) -> Void) {
-        let endpoint = ""
-        AF.request(endpoint, method: .get).validate().responseData { response in
+            debugPrint(response)
             switch (response.result) {
             case .success(let data):
                 let jsonDecoder = JSONDecoder()
-                jsonDecoder.dateDecodingStrategy = .iso8601
-                jsonDecoder.keyDecodingStrategy = .convertFromSnakeCase
-                if let eventsResponse = try? jsonDecoder.decode(BucketsResponse.self, from: data) {
-                    completion(eventsResponse)
+                if let entryResponse = try? jsonDecoder.decode(Entry.self, from: data) {
+                    completion(entryResponse)
                 } else {
-                    print("Failed to decode getAllBucketlistItems")
+                    print("Failed to decode postEntry")
                 }
             case .failure(let error):
                 print(error.localizedDescription)
@@ -198,7 +80,71 @@ class NetworkManager {
         }
     }
     
+    static func getEntriesByUserId(poster_id: Int, completion: @escaping (Entries) -> Void) {
+        let endpoint = "\(host)/entries/user/\(poster_id)/"
+        
+        AF.request(endpoint, method: .get).validate().responseData { response in
+            debugPrint(response)
+            switch (response.result) {
+            case .success(let data):
+                let jsonDecoder = JSONDecoder()
+                if let entriesResponse = try? jsonDecoder.decode(Entries.self, from: data) {
+                    completion(entriesResponse)
+                } else {
+                    print("Failed to decode sendToken")
+                }
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
     
+    static func getEntryByUserIdAndDate(poster_id: Int, date: Date, completion: @escaping (Result<Entry, Error>) -> Void) {
+        let endpoint = "\(host)/entries/user/\(poster_id)/"
+        
+        let params: [String: Any] = [
+            "date": convertDateToString(date: date),
+        ]
+        
+        AF.request(endpoint, method: .post, parameters: params, encoding: JSONEncoding.default).validate().responseData { response in
+            debugPrint(response)
+            switch (response.result) {
+            case .success(let data):
+                let jsonDecoder = JSONDecoder()
+                if let entryResponse = try? jsonDecoder.decode(Entry.self, from: data) {
+                    completion(.success(entryResponse))
+                } else {
+                    print("Failed to decode getEntryByUserIdAndDate")
+                }
+            case .failure(let error):
+                print(error.localizedDescription)
+                completion(.failure(error))
+            }
+        }
+    }
     
-    
+    static func getEntryByUserIdAndDateRange(poster_id: Int, start_date: Date, end_date: Date, completion: @escaping (Result<Emotions, Error>) -> Void) {
+        let endpoint = "\(host)/entries/user/\(poster_id)/range/"
+        
+        let params: [String: Any] = [
+            "start_date": convertDateToString(date: start_date),
+            "end_date": convertDateToString(date: end_date),
+        ]
+        
+        AF.request(endpoint, method: .post, parameters: params, encoding: JSONEncoding.default).validate().responseData { response in
+            debugPrint(response)
+            switch (response.result) {
+            case .success(let data):
+                let jsonDecoder = JSONDecoder()
+                if let entryResponse = try? jsonDecoder.decode(Emotions.self, from: data) {
+                    completion(.success(entryResponse))
+                } else {
+                    print("Failed to decode getEntryByUserIdAndDate")
+                }
+            case .failure(let error):
+                print(error.localizedDescription)
+                completion(.failure(error))
+            }
+        }
+    }
 }

@@ -11,27 +11,27 @@ typealias Animation = (UITableViewCell, IndexPath, UITableView) -> Void
 
 class CalendarViewController: UIViewController {
     var calendarView: UICalendarView = {
-        let calendar = UICalendarView()
-        calendar.locale = .current
-        calendar.calendar = .current
-        calendar.fontDesign = .rounded
-        calendar.tintColor = UIColor.warmPink()
-        return calendar
+        let calendarView = UICalendarView()
+        calendarView.locale = .current
+        calendarView.calendar = .current
+        calendarView.fontDesign = .rounded
+        calendarView.tintColor = UIColor.warmPink()
+        return calendarView
     }()
     
     var contrastView: UIView = {
-        let contrast = UIView()
-        contrast.backgroundColor = .white
-        contrast.layer.cornerRadius = 50
-        return contrast
+        let view = UIView()
+        view.backgroundColor = .white
+        view.layer.cornerRadius = 50
+        return view
     }()
     
     var calendarLabel: UILabel = {
-        let calendar = UILabel()
-        calendar.text = "Calendar"
-        calendar.textColor = .white
-        calendar.font = UIFont(name: "Quicksand-SemiBold", size: 30)
-        return calendar
+        let label = UILabel()
+        label.text = "Calendar"
+        label.textColor = .white
+        label.font = UIFont(name: "Quicksand-SemiBold", size: 30)
+        return label
     }()
     
     override func viewDidLoad() {
@@ -66,16 +66,7 @@ class CalendarViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        //        loadBookmarkedEvents()
     }
-    
-    //    func loadBookmarkedEvents() {
-    //        NetworkManager.getBookmarkedEvents() { events in
-    //            self.bookmarkedEvents = events.savedEvents
-    //            self.bookmarkedEventsTableView.reloadData()
-    //            }
-    //        }
-    //    }
 }
 
 extension CalendarViewController: UICalendarViewDelegate, UICalendarSelectionSingleDateDelegate {
@@ -85,6 +76,10 @@ extension CalendarViewController: UICalendarViewDelegate, UICalendarSelectionSin
     }
     
     func calendarView(_ calendarView: UICalendarView, decorationFor dateComponents: DateComponents) -> UICalendarView.Decoration? {
-        return nil
+        return .customView {
+            let emoji = UILabel()
+            emoji.text = ""
+            return emoji
+        }
     }
 }
