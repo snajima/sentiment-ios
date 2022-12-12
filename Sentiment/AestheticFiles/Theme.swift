@@ -86,6 +86,20 @@ extension CAGradientLayer {
         layer.endPoint = CGPoint(x: 1, y: 0)
         return layer
     }
+    
+    static func radiallyCircleGradientLayer(in frame: CGRect, color: UIColor) -> Self {
+        let clear = color.withAlphaComponent(0)
+        
+        let layer = Self()
+        layer.cornerRadius = frame.height / 2.0
+        layer.colors = [color.cgColor, clear.cgColor]
+        layer.frame = frame
+        layer.locations = [0, 1]
+        layer.type = .radial
+        layer.startPoint = CGPoint(x: 0.5, y: 0.5)
+        layer.endPoint = CGPoint(x: 1, y: 1)
+        return layer
+    }
 }
 
 extension UIViewController {

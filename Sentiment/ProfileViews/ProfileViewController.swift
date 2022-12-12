@@ -6,8 +6,14 @@
 //
 
 import UIKit
+import GoogleSignIn
 
 class ProfileViewController: UIViewController {
+    let dates = ["All Time", "1 Week", "1 Month", "3 Months", "6 Months", "1 Year", "3 Years"]
+    var emotions: [(emotion: String, percentage: CGFloat)] = []
+    var selectedDate: String = "All Time"
+    var selectedRow = 0
+    
     var backgroundView: UIView = {
         let view = UIView()
         view.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width + 500, height: 500)
@@ -21,6 +27,9 @@ class ProfileViewController: UIViewController {
         label.text = "Your Sentiment Profile"
         label.textColor = .white
         label.font = UIFont(name: "Quicksand-SemiBold", size: 30)
+        label.lineBreakMode = .byWordWrapping
+        label.numberOfLines = 0
+        label.textAlignment = .center
         return label
     }()
     
@@ -36,72 +45,61 @@ class ProfileViewController: UIViewController {
     
     var nameLabel: UILabel = {
         let label = UILabel()
-        label.text = "Hi, Stephen!"
+        if let googleName = GIDSignIn.sharedInstance.currentUser?.profile?.givenName {
+            label.text = "Hi, \(googleName)!"
+        } else {
+            label.text = "Hi!"
+        }
         label.textColor = .gray
         label.font = UIFont(name: "Quicksand-SemiBold", size: 25)
         return label
     }()
     
-    var lastWeekLabel: UILabel = {
+    var rangeLabel: UILabel = {
         let label = UILabel()
-        label.text = "In the Last Week"
-        label.textColor = .gray
-        label.font = UIFont(name: "Quicksand-SemiBold", size: 20)
-        return label
-    }()
-
-//    var barChartViewLastWeek: BarChartView
-    
-    var barChartViewLastWeek: UIView = {
-        let view = UIView()
-        view.layer.cornerRadius = 20
-        view.layer.borderWidth = 5
-        view.layer.borderColor = UIColor.offWhite().cgColor
-        return view
-    }()
-    
-    var lastMonthLabel: UILabel = {
-        let label = UILabel()
-        label.text = "In the Last Month"
+        label.text = "Moods (All Time)"
         label.textColor = .gray
         label.font = UIFont(name: "Quicksand-SemiBold", size: 20)
         return label
     }()
     
-    var barChartViewLastMonth: UIView = {
-        let view = UIView()
-        view.layer.cornerRadius = 20
-        view.layer.borderWidth = 5
-        view.layer.borderColor = UIColor.offWhite().cgColor
-        return view
+    var datePickerButton: UIButton = {
+        let button = UIButton(type: .custom)
+        let buttonImage = UIImage(named: "options")?.withRenderingMode(.alwaysTemplate)
+        button.setImage(buttonImage, for: .normal)
+        button.tintColor = .gray
+        button.addTarget(self, action: #selector(presentPickerView), for: .touchUpInside)
+        return button
     }()
     
-    var lastThreeMonthsLabel: UILabel = {
-        let label = UILabel()
-        label.text = "In the Last 3 Months"
-        label.textColor = .gray
-        label.font = UIFont(name: "Quicksand-SemiBold", size: 20)
-        return label
+    lazy var emotionTableView: UITableView = {
+        let tableView = UITableView()
+        tableView.backgroundColor = .clear
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.showsHorizontalScrollIndicator = false
+        tableView.separatorInset = UIEdgeInsets(top: 30, left: 0, bottom: 30, right: 0)
+        return tableView
     }()
     
-    var barChartViewLastThreeMonths: UIView = {
-        let view = UIView()
-        view.layer.cornerRadius = 20
-        view.layer.borderWidth = 5
-        view.layer.borderColor = UIColor.offWhite().cgColor
-        return view
+    let userLogoutButton: UIButton = {
+        let button = UIButton()
+        let buttonImage = UIImage(named: "logout")?.withRenderingMode(.alwaysTemplate)
+        button.setImage(buttonImage, for: .normal)
+        button.tintColor = .white
+        button.addTarget(self, action: #selector(logout), for: .touchUpInside)
+        return button
     }()
     
     override func viewDidLoad() {
         navigationController?.setNavigationBarHidden(true, animated: true)
         view.backgroundColor = UIColor.offWhite()
         
-        barChartViewLastWeek = BarChartView(in: self.view.bounds, emotions: loadDistributions(days: 7))
-        barChartViewLastWeek.layer.cornerRadius = 20
-        barChartViewLastWeek.layer.borderWidth = 5
-        barChartViewLastWeek.layer.borderColor = UIColor.offWhite().cgColor
+        emotionTableView.dataSource = self
+        emotionTableView.delegate = self
+        emotionTableView.register(EmotionTableViewCell.self, forCellReuseIdentifier: "EmotionTableViewCell")
+        loadDistributions(delta: DateComponents(year: -5))
         
-        [backgroundView, profileLabel, textBoxView, nameLabel, lastWeekLabel, barChartViewLastWeek, lastMonthLabel, barChartViewLastMonth, lastThreeMonthsLabel, barChartViewLastThreeMonths].forEach { subView in
+        [backgroundView, profileLabel, userLogoutButton, textBoxView, nameLabel, rangeLabel, datePickerButton, emotionTableView].forEach { subView in
             view.addSubview(subView)
             subView.translatesAutoresizingMaskIntoConstraints = false
         }
@@ -112,11 +110,17 @@ class ProfileViewController: UIViewController {
             backgroundView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: -250),
             backgroundView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 250),
             
-            profileLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
-            profileLabel.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 60),
-            profileLabel.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
+            userLogoutButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 27.5),
+            userLogoutButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 52.5),
+            userLogoutButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -30),
+            userLogoutButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -50),
             
-            textBoxView.topAnchor.constraint(equalTo: profileLabel.bottomAnchor, constant: 25),
+            profileLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
+            profileLabel.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
+            profileLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -60),
+            profileLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 60),
+            
+            textBoxView.topAnchor.constraint(equalTo: profileLabel.bottomAnchor, constant: 20),
             textBoxView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -50),
             textBoxView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 30),
             textBoxView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -30),
@@ -124,29 +128,18 @@ class ProfileViewController: UIViewController {
             nameLabel.topAnchor.constraint(equalTo: textBoxView.topAnchor, constant: 30),
             nameLabel.centerXAnchor.constraint(equalTo: textBoxView.centerXAnchor),
             
-            lastWeekLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 30),
-            lastWeekLabel.centerXAnchor.constraint(equalTo: nameLabel.centerXAnchor),
+            rangeLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 30),
+            rangeLabel.leadingAnchor.constraint(equalTo: textBoxView.leadingAnchor, constant: 30),
             
-            barChartViewLastWeek.topAnchor.constraint(equalTo: lastWeekLabel.bottomAnchor, constant: 15),
-            barChartViewLastWeek.heightAnchor.constraint(equalToConstant: 40),
-            barChartViewLastWeek.leadingAnchor.constraint(equalTo: textBoxView.leadingAnchor, constant: 30),
-            barChartViewLastWeek.trailingAnchor.constraint(equalTo: textBoxView.trailingAnchor, constant: -30),
+            datePickerButton.trailingAnchor.constraint(equalTo: textBoxView.trailingAnchor, constant: -10),
+            datePickerButton.centerYAnchor.constraint(equalTo: rangeLabel.centerYAnchor),
+            datePickerButton.widthAnchor.constraint(equalToConstant: 30),
+            datePickerButton.heightAnchor.constraint(equalToConstant: 30),
             
-            lastMonthLabel.topAnchor.constraint(equalTo: barChartViewLastWeek.bottomAnchor, constant: 30),
-            lastMonthLabel.centerXAnchor.constraint(equalTo: nameLabel.centerXAnchor),
-            
-            barChartViewLastMonth.topAnchor.constraint(equalTo: lastMonthLabel.bottomAnchor, constant: 15),
-            barChartViewLastMonth.heightAnchor.constraint(equalToConstant: 40),
-            barChartViewLastMonth.leadingAnchor.constraint(equalTo: textBoxView.leadingAnchor, constant: 30),
-            barChartViewLastMonth.trailingAnchor.constraint(equalTo: textBoxView.trailingAnchor, constant: -30),
-            
-            lastThreeMonthsLabel.topAnchor.constraint(equalTo: barChartViewLastMonth.bottomAnchor, constant: 30),
-            lastThreeMonthsLabel.centerXAnchor.constraint(equalTo: nameLabel.centerXAnchor),
-            
-            barChartViewLastThreeMonths.topAnchor.constraint(equalTo: lastThreeMonthsLabel.bottomAnchor, constant: 15),
-            barChartViewLastThreeMonths.heightAnchor.constraint(equalToConstant: 40),
-            barChartViewLastThreeMonths.leadingAnchor.constraint(equalTo: textBoxView.leadingAnchor, constant: 30),
-            barChartViewLastThreeMonths.trailingAnchor.constraint(equalTo: textBoxView.trailingAnchor, constant: -30),
+            emotionTableView.leadingAnchor.constraint(equalTo: textBoxView.leadingAnchor, constant: 30),
+            emotionTableView.trailingAnchor.constraint(equalTo: textBoxView.trailingAnchor, constant: -30),
+            emotionTableView.topAnchor.constraint(equalTo: rangeLabel.bottomAnchor, constant: 30),
+            emotionTableView.bottomAnchor.constraint(equalTo: textBoxView.bottomAnchor, constant: -30),
         ])
     }
     
@@ -154,11 +147,66 @@ class ProfileViewController: UIViewController {
         super.viewDidAppear(animated)
     }
     
-    func loadDistributions(days: Int) -> [String : CGFloat] {
-        var dayComponent    = DateComponents()
-        dayComponent.day    = -days
+    @objc func presentPickerView() {
+        let vc = UIViewController()
+        let pickerWidth = UIScreen.main.bounds.width - 10
+        let pickerHeight = UIScreen.main.bounds.height / 2
+        vc.preferredContentSize = CGSize(width: pickerWidth, height: pickerHeight)
+        let pickerView = UIPickerView(frame: CGRect(x: 0, y: 0, width: pickerWidth, height: pickerHeight))
+        pickerView.dataSource = self
+        pickerView.delegate = self
+        
+        pickerView.selectRow(selectedRow, inComponent: 0, animated: false)
+        
+        vc.view.addSubview(pickerView)
+        pickerView.centerXAnchor.constraint(equalTo: vc.view.centerXAnchor).isActive = true
+        pickerView.centerYAnchor.constraint(equalTo: vc.view.centerYAnchor).isActive = true
+        
+        let alert = UIAlertController(title: "Select Time Frame", message: "", preferredStyle: .actionSheet)
+        
+        alert.popoverPresentationController?.sourceView = datePickerButton
+        alert.popoverPresentationController?.sourceRect = datePickerButton.bounds
+        
+        alert.setValue(vc, forKey: "contentViewController")
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (UIAlertAction) in
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Select", style: .default, handler: { (UIAlertAction) in
+            self.selectedRow = pickerView.selectedRow(inComponent: 0)
+            self.selectedDate = self.dates[self.selectedRow]
+            self.rangeLabel.text = "Moods (\(self.selectedDate))"
+            
+            switch self.selectedDate {
+            case "1 Week":
+                self.loadDistributions(delta: DateComponents(day: -7))
+            case "1 Month":
+                self.loadDistributions(delta: DateComponents(month: -1))
+            case "3 Months":
+                self.loadDistributions(delta: DateComponents(month: -3))
+            case "6 Months":
+                self.loadDistributions(delta: DateComponents(month: -6))
+            case "1 Year":
+                self.loadDistributions(delta: DateComponents(year: -1))
+            case "3 Years":
+                self.loadDistributions(delta: DateComponents(year: -3))
+            case "All Time":
+                self.loadDistributions(delta: DateComponents(year: -5))
+            default:    
+                self.loadDistributions(delta: DateComponents(year: -5))
+            }
+        }))
+        
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    @objc func logout() {
+        GIDSignIn.sharedInstance.signOut()
+        self.navigationController?.pushViewController(GoogleAuthLoginVC(), animated: true)
+    }
+    
+    func loadDistributions(delta: DateComponents) {
         let theCalendar     = Calendar.current
-        let startDate        = theCalendar.date(byAdding: dayComponent, to: Date())!
+        let startDate        = theCalendar.date(byAdding: delta, to: Date())!
         var output: [String: CGFloat] = [:]
 
         NetworkManager.getEntryByUserIdAndDateRange(poster_id: 1, start_date: startDate, end_date: Date()) { result in
@@ -172,35 +220,38 @@ class ProfileViewController: UIViewController {
             case .failure(_):
                 output["none"] = 1.0
             }
+            
+            self.emotions = output.map { (key, value) in
+                return (key, value)
+            }
+            // sort self.emotions by 1st: second element in tuple (descending), 2nd: alphabetically by first element
+            self.emotions.sort(by: { $0.1 > $1.1 || ($0.1 == $1.1 && $0.0 < $1.0) })
+            self.emotionTableView.reloadData()
         }
-        return output
     }
 }
 
-class BarChartView: UIView {
-    var emotions: [String: CGFloat]
-    
-    init(in frame: CGRect, emotions: [String : CGFloat]) {
-        print("DEBUGING")
-        print(emotions)
-        self.emotions = emotions
-        super.init(frame: frame)
+extension ProfileViewController: UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return emotions.count
     }
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    override func draw(_ rect: CGRect) {
-        super.draw(rect)
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "EmotionTableViewCell", for: indexPath) as! EmotionTableViewCell
+        cell.configure(emotion: emotions[indexPath.row].0, percentage: emotions[indexPath.row].1)
         
-        var widthSoFar = 0.0
-        for (emotion, percentage) in emotions {
-            let emotionRect = CGRect(x: widthSoFar, y: 0, width: rect.size.width * percentage, height: rect.size.height)
-            emotionToColor[emotion]!.set()
-            guard let emotionContext = UIGraphicsGetCurrentContext() else { return }
-            emotionContext.fill(emotionRect)
-            widthSoFar += rect.size.width * percentage
-        }
+        return cell
+    }
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return dates.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return dates[row]
     }
 }

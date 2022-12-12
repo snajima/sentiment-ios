@@ -17,6 +17,7 @@
 		232A98362937F72000F3129F /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232A98352937F72000F3129F /* ProfileViewController.swift */; };
 		232A983A2937F74200F3129F /* DOFavoriteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232A98392937F74200F3129F /* DOFavoriteButton.swift */; };
 		232A9841293801E600F3129F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 232A9840293801E600F3129F /* GoogleService-Info.plist */; };
+		234003E32947C45A0054F7F3 /* EmotionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234003E22947C45A0054F7F3 /* EmotionTableViewCell.swift */; };
 		234269D4293BED7500FC81F3 /* Quicksand-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 234269D3293BED7500FC81F3 /* Quicksand-VariableFont_wght.ttf */; };
 		234269DA293BED7D00FC81F3 /* Quicksand-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 234269D5293BED7D00FC81F3 /* Quicksand-Medium.ttf */; };
 		234269DB293BED7D00FC81F3 /* Quicksand-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 234269D6293BED7D00FC81F3 /* Quicksand-Light.ttf */; };
@@ -43,6 +44,7 @@
 		232A98352937F72000F3129F /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		232A98392937F74200F3129F /* DOFavoriteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DOFavoriteButton.swift; sourceTree = "<group>"; };
 		232A9840293801E600F3129F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		234003E22947C45A0054F7F3 /* EmotionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmotionTableViewCell.swift; sourceTree = "<group>"; };
 		234269D3293BED7500FC81F3 /* Quicksand-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Quicksand-VariableFont_wght.ttf"; path = "Quicksand/Quicksand-VariableFont_wght.ttf"; sourceTree = "<group>"; };
 		234269D5293BED7D00FC81F3 /* Quicksand-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Quicksand-Medium.ttf"; path = "Quicksand/static/Quicksand-Medium.ttf"; sourceTree = "<group>"; };
 		234269D6293BED7D00FC81F3 /* Quicksand-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Quicksand-Light.ttf"; path = "Quicksand/static/Quicksand-Light.ttf"; sourceTree = "<group>"; };
@@ -104,6 +106,7 @@
 			isa = PBXGroup;
 			children = (
 				232A98352937F72000F3129F /* ProfileViewController.swift */,
+				234003E22947C45A0054F7F3 /* EmotionTableViewCell.swift */,
 			);
 			path = ProfileViews;
 			sourceTree = "<group>";
@@ -314,6 +317,7 @@
 				23BAE01429392F5400C01DBA /* EntryViewController.swift in Sources */,
 				237FFF6B2937E45B002BCD80 /* ViewController.swift in Sources */,
 				237FFF672937E45B002BCD80 /* AppDelegate.swift in Sources */,
+				234003E32947C45A0054F7F3 /* EmotionTableViewCell.swift in Sources */,
 				237FFF692937E45B002BCD80 /* SceneDelegate.swift in Sources */,
 				232A981E2937F29700F3129F /* TabViewController.swift in Sources */,
 				232A98312937F48E00F3129F /* Theme.swift in Sources */,
